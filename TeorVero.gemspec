@@ -6,10 +6,10 @@ Gem::Specification.new do |spec|
   spec.name = "TeorVero"
   spec.version = TeorVero::VERSION
   spec.authors = ["AvakyanK"]
-  spec.email = ["///"]
+  spec.email = ["konavakyan@sfedu.ru"]
 
-  spec.summary = "Write a short summary, because RubyGems requires one."
-  spec.description = "Write a longer description or delete this line."
+  spec.summary = "Discrete random variables"
+  spec.description = "Discrete random variables with simple using"
   spec.homepage = "https://github.com/AvakyanK/TeorVer.git"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
