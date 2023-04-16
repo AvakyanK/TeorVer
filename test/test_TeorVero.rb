@@ -131,6 +131,30 @@ end
     assert_equal "Data entered incorrectly",  TeorVer.binomialDis(3, 2, "wrong data")
   end
   
+  def test_binExpectVal_check1
+    assert_equal 0.4,  TeorVer.binExpectVal(2, 0.2)
+  end
+
+  def test_binExpectVal_wrong_data1
+    assert_equal "Data entered incorrectly",  TeorVer.binExpectVal(0, 0.2)
+  end
+
+  def test_binExpectVal_wrong_data2
+    assert_equal "Data entered incorrectly",  TeorVer.binExpectVal(-6, 0.2)
+  end
+
+  def test_binExpectVal_wrong_data3
+    assert_equal "Data entered incorrectly",  TeorVer.binExpectVal(4, 4)
+  end
+
+  def test_binExpectVal_wrong_data4
+    assert_equal "Data entered incorrectly",  TeorVer.binExpectVal("wrong data", 0.2)
+  end
+
+  def test_binExpectVal_wrong_data5
+    assert_equal "Data entered incorrectly",  TeorVer.binExpectVal(4, "wrong data")
+  end
+  
   
   
 end
