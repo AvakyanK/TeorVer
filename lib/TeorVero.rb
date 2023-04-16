@@ -345,6 +345,15 @@ end
   end
 end
    
+   #дисперсия биномиальной переменной
+def self.binDisper(n, p)
+  if (n.is_a? Integer) and (n > 0) and (p.is_a? Float) and (p <= 1) and (p > 0) then
+    return n * p*(1 - p)
+  else
+    return "Data entered incorrectly"
+  end
+end
+   
   #Дальше код
 end
 
