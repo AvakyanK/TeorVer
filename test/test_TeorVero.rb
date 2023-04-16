@@ -155,6 +155,41 @@ end
     assert_equal "Data entered incorrectly",  TeorVer.binExpectVal(4, "wrong data")
   end
   
+  def test_binDisper_chech1
+    assert_equal 0.36000000000000004,  TeorVer.binDisper(4, 0.1)
+  end
+
+  def test_binDisper_wrong_data1
+    assert_equal "Data entered incorrectly",  TeorVer.binDisper(0, 0.1)
+  end
+
+  def test_binDisper_wrong_data2
+    assert_equal "Data entered incorrectly",  TeorVer.binDisper(16, 10)
+  end
+
+  def test_binDisper_wrong_data3
+    assert_equal "Data entered incorrectly",  TeorVer.binDisper("wrong data", 10)
+  end
+
+  def test_binDisper_wrong_data4
+    assert_equal "Data entered incorrectly",  TeorVer.binDisper(4, "wrong data")
+  end
+
+  def test_binDistribution_check1
+    assert_equal 0.6000000000000001,  TeorVer.binDistribution(4, 0.1)
+  end
+
+  def test_binDistribution_wrong_data1
+    assert_equal "Data entered incorrectly",  TeorVer.binDistribution("wrong data", 0.1)
+  end
+
+  def test_binDistribution_wrong_data2
+    assert_equal "Data entered incorrectly",  TeorVer.binDistribution(-4, 0.1)
+  end
+
+  def test_binDistribution_wrong_data3
+    assert_equal "Data entered incorrectly",  TeorVer.binDistribution(4, "wrong data")
+  end
   
   
 end
