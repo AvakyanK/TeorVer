@@ -39,8 +39,8 @@ module TeorVero
         
         for d in x do
           
-          xv<<d.min
-          xx<<d.max
+          xv<< d.min
+          xx<< d.max
         end 
       end 
       
