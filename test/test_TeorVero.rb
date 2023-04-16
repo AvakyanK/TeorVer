@@ -93,9 +93,12 @@ class TestTeorVero < Minitest::Test
     assert_equal TeorVer.kvadrdev(arrerm, arr1), "Data Error"
     assert_equal TeorVer.kvadrdev(arr11, arr2), 2.051828452868
     assert_equal TeorVer.kvadrdev(arr11, arr1), "Data Error"
-
-
-   
-   
 end 
+  
+  def test_binomialDis_check1
+    assert_equal 0.7290000000000001,  TeorVer.binomialDis(3, 0, 0.1)
+  end
+  
+  
+  
 end
