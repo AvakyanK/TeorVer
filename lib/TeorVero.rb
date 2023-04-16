@@ -5,4 +5,5 @@ require_relative "TeorVero/version"
 module TeorVero
   class Error < StandardError; end
   # Your code goes here...
+  #Проверочка
 end
