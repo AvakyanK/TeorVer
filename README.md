@@ -13,14 +13,13 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
-matojid (x,y)
-принимает значения случайной величины х (которая содержит уникальные значения по определению) с вероятностями р
-
-
 You can calculate the expected value with
 '''ruby
-matojid(x,y)
+matojid(x, y=:None)
 '''
+Here and below, x can take the following data types:
+1. x = 
+
 
 
 You can calculate the random variable variance with
@@ -37,26 +36,43 @@ standardDev(hashValProb)
 
 You can calculate the binomial distribution with
 '''ruby
-binDis(p, n, k)
+binomialDis(n, k, p)
 '''
+input parameters:
+n - number of independent events
+k - number of occurrences of the event
+p - probability of occurrence of one event
+result:
+probability of occurrence of a possible value of k from n independent trials
+
 
 
 You can calculate the binomial expected value with
 '''ruby
 binExpectVal(n, p)
 '''
+input parameters:
+n - number of values
+p - the probability of occurrence of a value
 
 
 You can calculate the binomial random variable variance with
 '''ruby
 binDisper(n, p)
 '''
+input parameters:
+n - number of values
+p - the probability of occurrence of a value
+
 
 
 You can calculate the binomial standard deviation with
 '''ruby
-binDisper(n, p)
+binStandardDev(n, p)
 '''
+input parameters:
+n - number of values
+p - the probability of occurrence of a value
 
 
 You can calculate the сumulative distribution function
