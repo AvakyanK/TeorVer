@@ -20,7 +20,7 @@ module TeorVero
     end 
     if !none.nil?
     
-      p x
+     
       return x
     else 
       if x.size==2 
@@ -56,7 +56,7 @@ module TeorVero
       xv=x.values.map{|t| t.to_f}
       xx=x.keys.map{|y| y.to_f}
       xx.uniq!
-      #p xx,xv
+      
       return xx,xv
     end 
   end 
@@ -64,7 +64,7 @@ module TeorVero
   #Строковый тип был самым необычным и одновременно обычным. Мы убираем все лишние символы кроме точки и тире так как это показатели отриц числа и веществ числа. Потом из полученого таким способом массива мы сортируем СВ и вероятности по определению, на вход могут подаваться как две строки, так и одна содержащая любую комбинацию данных чисел. Прошу заменить, что использование индексации чисел например x1=2 не будет выполняться поэтому мы воздерживаемся от таких возможных заданий переменных то есть автор сдох когда решал способ исключения всех возможных ситуаций, поэтому он запретил использовать индексацию, желательно вообще описание строк только цифрами, либо с переменными например "x=1 y=2 z=4", то без индексации "x1=1 x2=2 x3=4"
   if x.is_a?(String) 
     x=x.gsub(/[^[-.\d+]]/,' ').split.map{|y| y.to_f}
-    #p x
+    
     if x.size==1
       return x, [1]
     end 
@@ -79,7 +79,7 @@ module TeorVero
       
       xv = x.select{|y| y<1 and y>0}
       xx = x.select{|y| y>=1 or y<=0}
-      #p xx
+    
       
       xx.uniq!
     end 
@@ -120,7 +120,7 @@ def self.matojid(x , y=:None)
   if ((y.sum==1 and (y[0]<=1 and y[0]>0)) or (x.sum==1 and (x[0]<=1 and x[0]>0)) ) and x.size==y.size 
    x.length.times do 
     
-    s=s+x[i]*y[i]
+    s=(s+x[i]*y[i]).round(12)
     i=i+1
    end 
   
@@ -206,28 +206,34 @@ end
 
 def self.dispersion(x,y =:None)
   begin 
+  
   #Сама функция это буквально M(x^2)-(M(x))^2  
-  s= matojid(x,y)*matojid(x,y)
+  
+  s= (matojid(x,y)*matojid(x,y)).round(12)
   
   x=provDis(x) 
   y=provDis(y)
     
-  return matojid(x,y)-s
+  return (matojid(x,y)-s).round(12)
     
   rescue Exception
+    if matojid(x,y)=='Data Error'
+      return 'Data Error'
+    end 
     return "Exception Error"
   end 
 end 
 
 def self.kvadrdev(x,y)
   begin 
-  Math.sqrt(dispersion(x,y)*dispersion(x,y))
+  return Math.sqrt(dispersion(x,y)).round(12)
   rescue Exception
     return "Exception Error"
   end 
 end 
 
-def self.funcdistr(x,y)
+
+def self.funcdistr(x,y =:None)
   begin 
   s=[]
   i=0
@@ -248,15 +254,14 @@ def self.funcdistr(x,y)
    (y.length-1).times do 
     
     
-    sp=(y[i]+y[i+1]).round(1)
+    sp=(y[i]+y[i+1]).round(12)
     sx="#{x[i]}<x<=#{x[i+1]}"
     s<<[sp,sx]
     i=i+1
-    p s
+    
    end 
     s<<[1,"x>#{x[-1]}"]
-    p ' in y'
-    p s
+   
     return s
     #Комментарии ошибок можно думаю изменить или расширить это не критично
   elsif (x.sum==1 and (x[0]<=1 and x[0]>0)) and x.size==y.size 
@@ -267,11 +272,11 @@ def self.funcdistr(x,y)
    (x.length-1).times do 
     
     
-    sp=(x[i]+x[i+1]).round(1)
+    sp=(x[i]+x[i+1]).round(12)
     sx="#{y[i]}<x<=#{y[i+1]}"
     s<<[sp,sx]
     i=i+1
-    p s
+    
    end 
     s<<[1,"x>#{y[-1]}"]
     
