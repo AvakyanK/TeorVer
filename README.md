@@ -13,12 +13,14 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
+matojid (x,y)
+принимает значения случайной величины х (которая содержит уникальные значения по определению) с вероятностями р
+
 
 You can calculate the expected value with
 '''ruby
-expectedValue.create(hashValProb)
+matojid(x,y)
 '''
-
 
 
 You can calculate the random variable variance with
