@@ -308,4 +308,13 @@ def binomialDis(n, k, p)
     return "Data entered incorrectly"
   end
 end
+  
+#Биномиальное математическое ожидание
+ def binExpectVal(n, p)
+  if (n.is_a? Integer) and (n > 0) and (p.is_a? Float) and (p <= 1) and (p > 0) then
+    return n * p
+  else
+    return "Data entered incorrectly"
+  end
+end
 
