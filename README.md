@@ -16,10 +16,15 @@ If bundler is not being used to manage dependencies, install the gem by executin
 You can calculate the expected value with
 '''ruby
 matojid(x, y=:None)
-'''
+'''.
+x and y can be interchanged
 Here and below, x can take the following data types:
-1. x = 
-
+1. x = c; (c = const) (x = c; y = c => Error)
+2. x = [1, 2, 3] y = [0.1, 0,2, 0.7] These arrays contain the values of random variables and their probabilities
+3. x = [[1, 2, 3], [0.1, 0,2, 0.7]] The array accepts both random values and their probabilities. Order doesn't matter
+4. x = [[x1, p1], [x2, p2], [x3, p3]] x takes a random value, p takes its probability
+5. x = {"x1" => 1, "x2" => 2, "x3" => 3} y = {"p1" => 0.1, "p2" => 0.2, "p3" => 0.7 }
+6. x = {x1:p1, x2:p2, x3:p3} The key is a random value, the value is its probability. Order is important 
 
 
 You can calculate the random variable variance with
