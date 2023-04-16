@@ -38,11 +38,11 @@ You can calculate the binomial distribution with
 '''ruby
 binomialDis(n, k, p)
 '''
-input parameters:
-n - number of independent events
-k - number of occurrences of the event
-p - probability of occurrence of one event
-result:
+Input parameters:
+n - number of independent events; 
+k - number of occurrences of the event; 
+p - probability of occurrence of one event.
+Result:
 probability of occurrence of a possible value of k from n independent trials
 
 
@@ -51,8 +51,8 @@ You can calculate the binomial expected value with
 '''ruby
 binExpectVal(n, p)
 '''
-input parameters:
-n - number of values
+Input parameters:
+n - number of values; 
 p - the probability of occurrence of a value
 
 
@@ -60,9 +60,9 @@ You can calculate the binomial random variable variance with
 '''ruby
 binDisper(n, p)
 '''
-input parameters:
-n - number of values
-p - the probability of occurrence of a value
+Input parameters:
+n - number of values;
+p - the probability of occurrence of a value.
 
 
 
@@ -71,8 +71,8 @@ You can calculate the binomial standard deviation with
 binStandardDev(n, p)
 '''
 input parameters:
-n - number of values
-p - the probability of occurrence of a value
+n - number of values; 
+p - the probability of occurrence of a value.
 
 
 You can calculate the сumulative distribution function
