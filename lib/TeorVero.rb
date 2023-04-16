@@ -141,7 +141,7 @@ end
 def self.provDis(x)
   
   if x.is_a?(Integer)
-    x=0
+    x=x*x
     return x
   end 
   
