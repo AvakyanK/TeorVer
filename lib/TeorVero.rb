@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "TeorVero/version"
+include Math
 
 module TeorVero
   class Error < StandardError; end
@@ -289,6 +290,22 @@ def self.funcdistr(x,y =:None)
   end 
 end 
   #Дальше код
-  
-  
 end
+
+#функция факториала
+def factorial(n)
+  (1..n).inject(1){|f,i| f*i}
+end
+
+# Биномиальный закон распределения
+# n - количество независимых событий
+# k - количетво появления события
+# p - вероятность появления одного события
+def binomialDis(n, k, p)
+  if (n.is_a? Integer) and (n > 0) and (k.is_a? Integer) and (k >= 0) and (p.is_a? Float) and (p < 1) and (p > 0) then
+    return factorial(n) * p**k * (1 - p)**(n - k) / (factorial(k) * factorial(n - k))
+  else
+    return "Data entered incorrectly"
+  end
+end
+
