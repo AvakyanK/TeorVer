@@ -6,7 +6,7 @@ module TeorVero
   class Error < StandardError; end
   # Your code goes here...
 
-  def provnaclass(x, none = 1)
+  def self.provnaclass(x, none = 1)
   #Ответвленная функция на проверку класса задаваемой переменной и дальнейшего рассмотрения возможных ситуаций 
   #Когда мы получаем число то его мат ожидание будет равно этому же числу поэтому мы превращаем переменную х в строковый тип с вероятностью 1 и работает как со строкой функция которой описана ниже 
   if x.is_a?(Integer)
@@ -135,7 +135,7 @@ def self.matojid(x , y=:None)
   end 
 end 
 
-def provDis(x)
+def self.provDis(x)
   #Ну эта проверка олицетворяет возведения в квадрат значений СВ чтобы найти мат ожидание от квадрата х 
   #Просто разные элементы как и в мат ожидании
   if x.is_a?(Integer)
@@ -207,21 +207,21 @@ end
 def self.dispersion(x,y =:None)
   begin 
   #Сама функция это буквально M(x^2)-(M(x))^2  
-  s= self.matojid(x,y)*seld.matojid(x,y)
+  s= matojid(x,y)*matojid(x,y)
   
   x=provDis(x) 
   y=provDis(y)
     
-  return self.matojid(x,y)-s
+  return matojid(x,y)-s
     
   rescue Exception
     return "Exception Error"
   end 
 end 
 
-def self.srednkvad(x,y)
+def self.kvadrdev(x,y)
   begin 
-  Math.sqrt(self.dispersion(x,y)*self.dispersion(x,y))
+  Math.sqrt(dispersion(x,y)*dispersion(x,y))
   rescue Exception
     return "Exception Error"
   end 
