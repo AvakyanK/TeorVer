@@ -37,7 +37,7 @@ standardDev(hashValProb)
 You can calculate the binomial distribution with
 '''ruby
 binomialDis(n, k, p)
-'''
+'''.
 Input parameters:
 n - number of independent events; 
 k - number of occurrences of the event; 
@@ -50,7 +50,7 @@ probability of occurrence of a possible value of k from n independent trials
 You can calculate the binomial expected value with
 '''ruby
 binExpectVal(n, p)
-'''
+'''.
 Input parameters:
 n - number of values; 
 p - the probability of occurrence of a value
@@ -59,7 +59,7 @@ p - the probability of occurrence of a value
 You can calculate the binomial random variable variance with
 '''ruby
 binDisper(n, p)
-'''
+'''.
 Input parameters:
 n - number of values;
 p - the probability of occurrence of a value.
@@ -69,8 +69,8 @@ p - the probability of occurrence of a value.
 You can calculate the binomial standard deviation with
 '''ruby
 binStandardDev(n, p)
-'''
-input parameters:
+'''.
+Input parameters:
 n - number of values; 
 p - the probability of occurrence of a value.
 
