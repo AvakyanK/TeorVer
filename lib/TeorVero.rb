@@ -354,7 +354,7 @@ def self.binDisper(n, p)
   end
 end
   
-  def binDistribution(n, p)
+  def self.binDistribution(n, p)
   if (n.is_a? Integer) and (n > 0) and (p.is_a? Float) and (p <= 1) and (p > 0) then
     return sqrt(n * p*(1 - p))
   else
