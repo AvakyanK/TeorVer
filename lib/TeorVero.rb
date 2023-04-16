@@ -118,7 +118,7 @@ def self.matojid(x , y=:None)
   end
   
   #Данная проверка условий ставит рамки на задачу х и у, то есть пользователь мог ввести не х и у а ввести у и х, что меняет местами проверку условий на выполнение свойства распределения СВ
-  if ((y.sum==1 and (y[0]<=1 and y[0]>0)) or (x.sum==1 and (x[0]<=1 and x[0]>0)) ) and x.size==y.size 
+  if ((y.sum==1 and (y[0]<=1 and y[0]>0) and (x[0].abs >=1 or x[0]==0) or (x.sum==1 and (x[0]<=1 and x[0]>0) and (y[0]==0 or y[0].abs >=1 )) ) and x.size==y.size )
    x.length.times do 
     
     s=(s+x[i]*y[i]).round(12)
@@ -168,7 +168,7 @@ def self.provDis(x)
     for d in k do 
       if k.is_a?(Symbol) or k.join.gsub(/[[-.\d+]]/,' ').gsub(' ','')!=''
         b=false
-    
+        #x=x.transform_values{ |v| v*v}
         
       end 
       
@@ -177,17 +177,19 @@ def self.provDis(x)
     
     
     end
+     
     if !b
-      if (x.values[0]>1 or x.values[0]<0) 
+      if (x.values[0]>=1 or x.values[0]<=0) 
          x=x.transform_values{ |v| v*v}
       end 
     else 
       
       x=x.transform_keys{ |v| v.to_f}
-      if (x.keys[0]>1 or x.keys[0]<0) 
+      if (x.keys[0]>=1 or x.keys[0]<=0) 
          x=x.transform_keys{ |v| v*v}
       end 
     end 
+   
     return x
   end 
   if x.is_a?(String)
@@ -200,7 +202,7 @@ def self.provDis(x)
       end 
       i+=1
     end 
-    p x.join(' ')
+    
     return x.join(' ')
   end 
 end 
@@ -210,9 +212,10 @@ def self.dispersion(x,y =:None)
   
   #Сама функция это буквально M(x^2)-(M(x))^2  
   
-  s= (matojid(x,y)*matojid(x,y)).round(12)
+  s = (matojid(x,y)*matojid(x,y)).round(12)
   
   x=provDis(x) 
+   
   y=provDis(y)
     
   return (matojid(x,y)-s).round(12)
@@ -225,10 +228,16 @@ def self.dispersion(x,y =:None)
   end 
 end 
 
-def self.kvadrdev(x,y)
+def self.kvadrdev(x,y=:None)
   begin 
-  return Math.sqrt(dispersion(x,y)).round(12)
+   
+    
+      return Math.sqrt(dispersion(x,y)).round(12)
+    
   rescue Exception
+    if dispersion(x,y)=='Data Error'
+      return 'Data Error'
+    end 
     return "Exception Error"
   end 
 end 
@@ -248,37 +257,57 @@ def self.funcdistr(x,y =:None)
    
   end
   
-  if (y.sum==1 and (y[0]<=1 and y[0]>0)) and x.size==y.size 
-  sp=0
-  sx="x<=#{x[0]}"
-  s<<[sp,sx]
-   (y.length-1).times do 
+  if (y.sum==1 and (y[0]<1 and y[0]>0) and (x[0]==0 or x[0].abs >=1 )) and x.size==y.size and x.size >1
+    h=Hash[]
+    hi=0
+    x.length.times do 
+      h[x[hi]]=y[hi]
+      hi=hi+1
+    end 
+    h=h.sort.to_h
+    x=h.keys
+    y=h.values
     
-    
-    sp=(y[i]+y[i+1]).round(12)
-    sx="#{x[i]}<x<=#{x[i+1]}"
+
+    sp=0
+    sx="x<=#{x[0]}"
     s<<[sp,sx]
-    i=i+1
+    (y.length-1).times do 
     
-   end 
+    
+      sp=(sp+y[i]).round(12)
+      sx="#{x[i]}<x<=#{x[i+1]}"
+      s<<[sp,sx]
+      i=i+1
+    
+    end 
     s<<[1,"x>#{x[-1]}"]
    
     return s
     #Комментарии ошибок можно думаю изменить или расширить это не критично
-  elsif (x.sum==1 and (x[0]<=1 and x[0]>0)) and x.size==y.size 
-  sp=0
-  sx="x<=#{y[0]}"
+  elsif (x.sum==1 and (x[0]<1 and x[0]>0) and (y[0]==0 or y[0].abs >=1 )) and x.size==y.size and y.size>1
+    h=Hash[]
+    hi=0
+    y.length.times do 
+      h[y[hi]]=x[hi]
+      hi=hi+1
+    end 
+    h=h.sort.to_h
+    y=h.keys
+    x=h.values
+    sp=0
+    sx="x<=#{y[0]}"
     
-  s<<[sp,sx]
-   (x.length-1).times do 
-    
-    
-    sp=(x[i]+x[i+1]).round(12)
-    sx="#{y[i]}<x<=#{y[i+1]}"
     s<<[sp,sx]
-    i=i+1
+    (x.length-1).times do 
     
-   end 
+    
+      sp=(sp+x[i]).round(12)
+      sx="#{y[i]}<x<=#{y[i+1]}"
+      s<<[sp,sx]
+      i=i+1
+    
+    end 
     s<<[1,"x>#{y[-1]}"]
     
     return s
