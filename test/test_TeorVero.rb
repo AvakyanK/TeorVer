@@ -99,6 +99,38 @@ end
     assert_equal 0.7290000000000001,  TeorVer.binomialDis(3, 0, 0.1)
   end
   
+    def test_binomialDis_check2
+    assert_equal 0.0010000000000000002,  TeorVer.binomialDis(3, 3, 0.1)
+  end
+
+  def test_binomialDis_check3
+    assert_equal 0.027000000000000007,  TeorVer.binomialDis(3, 2, 0.1)
+  end
+
+  def test_binomialDis_wrong_data1
+    assert_equal "Data entered incorrectly",  TeorVer.binomialDis(-2, 2, 0.1)
+  end
+
+  def test_binomialDis_wrong_data2
+    assert_equal "Data entered incorrectly",  TeorVer.binomialDis(2, -2, 0.1)
+  end
+
+  def test_binomialDis_wrong_data3
+    assert_equal "Data entered incorrectly",  TeorVer.binomialDis(2, 2, 10)
+  end
+
+  def test_binomialDis_wrong_data4
+    assert_equal "Data entered incorrectly",  TeorVer.binomialDis(2, "data", 10)
+  end
+
+  def test_binomialDis_wrong_data5
+    assert_equal "Data entered incorrectly",  TeorVer.binomialDis("wrong data", 2, 10)
+  end
+
+  def test_binomialDis_wrong_data6
+    assert_equal "Data entered incorrectly",  TeorVer.binomialDis(3, 2, "wrong data")
+  end
+  
   
   
 end
