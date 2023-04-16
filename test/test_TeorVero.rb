@@ -64,6 +64,7 @@ class TestTeorVero < Minitest::Test
     assert_equal TeorVer.matojid(arr11, arr2), -0.7
     assert_equal TeorVer.matojid(arr11, arr1), "Data Error"
 
+    assert_equal TeorVer.dispersion(5), 0.0
     assert_equal TeorVer.dispersion([1,2,3], [0.1,0.7,0.2]), 0.29
     assert_equal TeorVer.dispersion([0.1,0.7,0.2], [1,2,3]), 0.29
     assert_equal TeorVer.dispersion(arrs), 0.29
