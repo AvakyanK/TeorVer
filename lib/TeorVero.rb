@@ -318,11 +318,9 @@ def self.funcdistr(x,y =:None)
     return "Exception Error"
   end 
 end 
-  #Дальше код
-end
-
-#функция факториала
-def factorial(n)
+  
+  #функция факториала
+def self.factorial(n)
   (1..n).inject(1){|f,i| f*i}
 end
 
@@ -330,7 +328,7 @@ end
 # n - количество независимых событий
 # k - количетво появления события
 # p - вероятность появления одного события
-def binomialDis(n, k, p)
+def self.binomialDis(n, k, p)
   if (n.is_a? Integer) and (n > 0) and (k.is_a? Integer) and (k >= 0) and (p.is_a? Float) and (p < 1) and (p > 0) then
     return factorial(n) * p**k * (1 - p)**(n - k) / (factorial(k) * factorial(n - k))
   else
@@ -339,11 +337,14 @@ def binomialDis(n, k, p)
 end
   
 #Биномиальное математическое ожидание
- def binExpectVal(n, p)
+ def self.binExpectVal(n, p)
   if (n.is_a? Integer) and (n > 0) and (p.is_a? Float) and (p <= 1) and (p > 0) then
     return n * p
   else
     return "Data entered incorrectly"
   end
+end
+   
+  #Дальше код
 end
 
