@@ -443,5 +443,25 @@ def central_moment(arr, k)
 end
 
 
+# Асимметрия
+def skewness(arr)
+  if arr.is_a?(Array)
+    return nil if arr == []
+    n = arr.length
+    return 0.0 if n == 1
+    mean = arr.sum / n.to_f
+    variance = arr.sum { |x| (x - mean)**2 } / (n - 1).to_f
+    standard_deviation = Math.sqrt(variance)
+
+    numerator = arr.sum { |x| (x - mean)**3 }
+    denominator = n * standard_deviation**3
+
+    return numerator / denominator
+  else
+    return "Data entered incorrectly"
+  end
+end
+
+
   #Дальше код
 end
