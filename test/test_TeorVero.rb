@@ -10,7 +10,7 @@ class TestTeorVero < Minitest::Test
   def test_it_does_something_useful
     assert false
   end
-  
+
   def test_mat_disp_kvad_func
   #assert_equal true, true
     arrs = [[1,2,3],[0.1,0.7,0.2]]
@@ -27,7 +27,7 @@ class TestTeorVero < Minitest::Test
     strp = '0.1, 0.7, :0.2'
     strob = '1 2 3 0.1 0.7 0.2'
     strobr = ' 0.1 0.7 0.2 1 2 3 '
-  
+
     assert_equal TeorVer.funcdistr(arrs), [[0, "x<=1"], [0.8, "1<x<=2"], [0.9, "2<x<=3"], [1, "x>3"]]
     assert_equal TeorVer.funcdistr(arrsm), [[0, "x<=-2"], [0.7, "-2<x<=1"], [0.8, "1<x<=3"], [1, "x>3"]]
     assert_equal TeorVer.funcdistr(arr1,arr2),  [[0, "x<=1"], [0.8, "1<x<=2"], [0.9, "2<x<=3"], [1, "x>3"]]
@@ -48,7 +48,7 @@ class TestTeorVero < Minitest::Test
     assert_equal TeorVer.funcdistr(strob), [[0, "x<=1.0"], [0.1, "1.0<x<=2.0"], [0.8, "2.0<x<=3.0"], [1, "x>3.0"]]
     assert_equal TeorVer.funcdistr(strobr), [[0, "x<=1.0"], [0.1, "1.0<x<=2.0"], [0.8, "2.0<x<=3.0"], [1, "x>3.0"]]
 
-  
+
     assert_equal TeorVer.matojid(arr1, arr2), 2.1
     assert_equal TeorVer.matojid(arr2, arr1), 2.1
     assert_equal TeorVer.matojid(arrs), 2.1
@@ -56,7 +56,7 @@ class TestTeorVero < Minitest::Test
     assert_equal TeorVer.matojid(strob), 2.1
     assert_equal TeorVer.matojid(strobr), 2.1
     assert_equal TeorVer.matojid(hashx, hashp), 2.1
-    assert_equal TeorVer.matojid(hashs), 2.1 
+    assert_equal TeorVer.matojid(hashs), 2.1
     assert_equal TeorVer.matojid(arrer), "Exception Error"
     assert_equal TeorVer.matojid(arrerm), "Exception Error"
     assert_equal TeorVer.matojid(arrerm, arr2), "Data Error"
@@ -94,12 +94,12 @@ class TestTeorVero < Minitest::Test
     assert_equal TeorVer.kvadrdev(arrerm, arr1), "Data Error"
     assert_equal TeorVer.kvadrdev(arr11, arr2), 2.051828452868
     assert_equal TeorVer.kvadrdev(arr11, arr1), "Data Error"
-end 
-  
+end
+
   def test_binomialDis_check1
     assert_equal 0.7290000000000001,  TeorVer.binomialDis(3, 0, 0.1)
   end
-  
+
     def test_binomialDis_check2
     assert_equal 0.0010000000000000002,  TeorVer.binomialDis(3, 3, 0.1)
   end
@@ -131,7 +131,7 @@ end
   def test_binomialDis_wrong_data6
     assert_equal "Data entered incorrectly",  TeorVer.binomialDis(3, 2, "wrong data")
   end
-  
+
   def test_binExpectVal_check1
     assert_equal 0.4,  TeorVer.binExpectVal(2, 0.2)
   end
@@ -155,7 +155,7 @@ end
   def test_binExpectVal_wrong_data5
     assert_equal "Data entered incorrectly",  TeorVer.binExpectVal(4, "wrong data")
   end
-  
+
   def test_binDisper_chech1
     assert_equal 0.36000000000000004,  TeorVer.binDisper(4, 0.1)
   end
@@ -191,6 +191,22 @@ end
   def test_binStandardDev_wrong_data3
     assert_equal "Data entered incorrectly",  TeorVer.binStandardDev(4, "wrong data")
   end
-  
-  
+
+  def test_median_even
+    assert_equal(5.5, median([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
+  end
+
+  def test_median_odd
+    assert_equal(3, median([1, 2, 3, 4, 5]))
+  end
+
+  def test_median_nil
+    assert_equal(nil, median([]))
+  end
+
+  def test_median_one
+    assert_equal(1, median([1]]))
+  end
+
+
 end
