@@ -364,7 +364,7 @@ end
 
 
 # Медиана
-def median(arr)
+def self.median(arr)
   if arr.is_a?(Array)
     return nil if arr == []
     return arr[0] if arr.length == 1
@@ -388,7 +388,7 @@ end
 
 
 # Мода
-def mode(arr)
+def self.mode(arr)
   if arr.is_a?(Array)
     # Создаем пустой хэш для хранения количества вхождений каждого элемента
     counts = Hash.new(0)
@@ -414,7 +414,7 @@ def mode(arr)
 end
 
 # Начальный момент
-def starting_moment(arr, k)
+def self.starting_moment(arr, k)
   if arr.is_a?(Array) and k.is_a?(Integer)
     return nil if arr == []
     moment_k = 0
@@ -429,7 +429,7 @@ end
 
 
 # Центральный момент
-def central_moment(arr, k)
+def self.central_moment(arr, k)
   if arr.is_a?(Array) and  k.is_a?(Integer)
     mean = arr.sum / arr.length.to_f
     moment_k = 0
@@ -444,7 +444,7 @@ end
 
 
 # Асимметрия
-def skewness(arr)
+def self.skewness(arr)
   if arr.is_a?(Array)
     return nil if arr == []
     n = arr.length
