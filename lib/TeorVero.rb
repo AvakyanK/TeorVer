@@ -384,6 +384,35 @@ def median(arr)
   else
     return "Data entered incorrectly"
   end
+end
+
+
+def mode(arr)
+  if arr.is_a?(Array)
+    # Создаем пустой хэш для хранения количества вхождений каждого элемента
+    counts = Hash.new(0)
+
+    # Считаем количество вхождений каждого элемента массива
+    arr.each do |elem|
+      counts[elem] += 1
+    end
+
+    # Находим значение(я) с максимальным количеством вхождений
+    max_count = counts.values.max
+    modes = counts.select { |k, v| v == max_count }.keys.sort
+
+    # Если все элементы массива уникальны, то моды нет
+    if modes.length == arr.length
+      return nil
+    else
+      return modes
+    end
+  else
+    return "Data entered incorrectly"
+  end
+end
+
+
 
   #Дальше код
 end
