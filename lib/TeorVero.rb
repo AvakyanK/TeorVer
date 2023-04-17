@@ -463,5 +463,26 @@ def self.skewness(arr)
 end
 
 
+# Эксцесс
+def self.excess(arr)
+  if arr.is_a?(Array)
+    n = arr.length
+    return nil if n < 4 # нельзя найти эксцесс для массива с менее чем 4 элементами
+
+    # находим выборочное среднее
+    m = arr.reduce(:+) / n.to_f
+
+    # находим выборочное среднее кубов отклонений
+    m3 = arr.reduce(0) { |sum, x| sum + (x - m)**3 } / n.to_f
+
+    # находим стандартное отклонение
+    s = Math.sqrt(arr.reduce(0) { |sum, x| sum + (x - m)**2 } / (n - 1))
+
+    # вычисляем эксцесс
+    return (m3 - 3*m*s**2 - m**3) / s**4
+  else
+    return "Data entered incorrectly"
+  end
+end
   #Дальше код
 end
