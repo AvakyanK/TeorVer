@@ -193,20 +193,63 @@ end
   end
 
   def test_median_even
-    assert_equal(5.5, median([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
+    assert_equal(5.5, TeorVer.median([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
   end
 
   def test_median_odd
-    assert_equal(3, median([1, 2, 3, 4, 5]))
+    assert_equal(3, TeorVer.median([1, 2, 3, 4, 5]))
   end
 
   def test_median_nil
-    assert_equal(nil, median([]))
+    assert_equal(nil, TeorVer.median([]))
   end
 
   def test_median_one
-    assert_equal(1, median([1]]))
+    assert_equal(1, TeorVer.median([1]]))
   end
 
 
+  def test_mode_nil
+    assert_equal(nil, TeorVer.mode([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
+  end
+
+  def test_mode_one
+    assert_equal([3], TeorVer.mode([1, 3, 3, 3, 5]))
+    assert_equal([8], TeorVer.mode([8, 1, 8, 3, 8, 8, 3, 3, 5]))
+  end
+
+  def test_mode_two
+    assert_equal([1, 3], TeorVer.mode([1, 3, 3, 3, 5, 1, 1]))
+    assert_equal([1, 3], TeorVer.mode([1, 3, 3, 3, 5, 1, 5, 1]))
+  end
+
+  def test_mode_three
+    assert_equal([1, 3, 5], TeorVer.mode([3, 3, 5, 1, 5, 1]))
+    assert_equal([1, 3, 9], TeorVer.mode([9, 1, 3, 9, 3, 1, 3, 5, 1, 9]))
+  end
+
+
+  def test_starting_moment_k_1
+    assert_equal(3.0, TeorVer.starting_moment([1, 2, 3, 4, 5], 1))
+    assert_equal(2.75, TeorVer.starting_moment([2, 2, 3, 4], 1))
+    assert_equal(1.75, TeorVer.starting_moment([1, 2, 2, 2], 1))
+  end
+
+  def test_starting_k_2
+    assert_equal(11.0, TeorVer.starting_moment([1, 2, 3, 4, 5], 2))
+    assert_equal(8.25, TeorVer.starting_moment([2, 2, 3, 4], 2))
+    assert_equal(3.25, TeorVer.starting_moment([1, 2, 2, 2], 2))
+  end
+
+  def test_starting_k_3
+    assert_equal(45.0, TeorVer.starting_moment([1, 2, 3, 4, 5], 3))
+    assert_equal(26.75, TeorVer.starting_moment([2, 2, 3, 4], 3))
+    assert_equal(6.25, TeorVer.starting_moment([1, 2, 2, 2], 3))
+  end
+
+  def test_starting_moment_nil
+    assert_equal(nil, TeorVer.starting_moment([], 1))
+    assert_equal(nil, TeorVer.starting_moment([], 2))
+    assert_equal(nil, TeorVer.starting_moment([], 3))
+  end
 end
