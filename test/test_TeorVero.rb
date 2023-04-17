@@ -252,4 +252,38 @@ end
     assert_equal(nil, TeorVer.starting_moment([], 2))
     assert_equal(nil, TeorVer.starting_moment([], 3))
   end
+
+  def test_central_moment
+    data = [1, 2, 3, 4, 5]
+    assert_in_delta(0, TeorVer.central_moment(data, 1), 0.001)
+    assert_in_delta(2, TeorVer.central_moment(data, 2), 0.001)
+    assert_in_delta(0, TeorVer.central_moment(data, 3), 0.001)
+    assert_in_delta(6.8, TeorVer.central_moment(data, 4), 0.001)
+  end
+
+  def test_skewness_positive
+    array = [1, 2, 3, 4, 5, 6, 87, 8, 9, 10, 11, 12]
+    assert_equal(2.535, TeorVer.skewness(array).round(3))
+  end
+
+  def test_skewness_negative
+    array = [1, 2, 3, 4, 5, 6, -87, 8, 9, 10, 11, 12]
+    assert_equal(-2.563, TeorVer.skewness(array).round(3))
+  end
+
+
+  def test_skewness_zero
+    array = [1, 2, 3, 4, 5]
+    assert_equal(0.0, TeorVer.skewness(array))
+  end
+
+  def test_skewness_single_value
+    array = [1]
+    assert_equal(0.0, TeorVer.skewness(array))
+  end
+
+  def test_skewness_empty_array
+    array = []
+    assert_nil(TeorVer.skewness(array))
+  end
 end
