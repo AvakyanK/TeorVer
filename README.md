@@ -24,7 +24,7 @@ Here and below, x can take the following data types:
 3. x = [[1, 2, 3], [0.1, 0,2, 0.7]] The array accepts both random values and their probabilities. Order doesn't matter
 4. x = [[x1, p1], [x2, p2], [x3, p3]] x takes a random value, p takes its probability
 5. x = {"x1" => 1, "x2" => 2, "x3" => 3} y = {"p1" => 0.1, "p2" => 0.2, "p3" => 0.7 }
-6. x = {x1:p1, x2:p2, x3:p3} The key is a random value, the value is its probability. Order is important 
+6. x = {x1:p1, x2:p2, x3:p3} The key is a random value, the value is its probability. Order is important
 
 
 You can calculate the random variable variance with
@@ -44,8 +44,8 @@ You can calculate the binomial distribution with
 binomialDis(n, k, p)
 '''.
 Input parameters:
-n - number of independent events; 
-k - number of occurrences of the event; 
+n - number of independent events;
+k - number of occurrences of the event;
 p - probability of occurrence of one event.
 Result:
 probability of occurrence of a possible value of k from n independent trials
@@ -57,7 +57,7 @@ You can calculate the binomial expected value with
 binExpectVal(n, p)
 '''.
 Input parameters:
-n - number of values; 
+n - number of values;
 p - the probability of occurrence of a value
 
 
@@ -76,13 +76,45 @@ You can calculate the binomial standard deviation with
 binStandardDev(n, p)
 '''.
 Input parameters:
-n - number of values; 
+n - number of values;
 p - the probability of occurrence of a value.
 
 
 You can calculate the сumulative distribution function
 '''ruby
 distibFun(hashValProb)
+
+
+
+You can calculate the median
+'''ruby
+median(arr)
+Input parameters:
+arr - array of values;
+
+You can calculate the starting moment
+'''ruby
+starting_moment(arr, k)
+Input parameters:
+arr - array of values;  
+k - integer value (moment order);
+
+You can calculate the central moment
+'''ruby
+central_moment(arr, k)
+Input parameters:
+arr - array of values;  
+k - integer value (moment order);
+
+
+You can calculate the excess
+'''ruby
+excess(arr)
+Input parameters:
+arr - array of values;
+
+
+
 '''
 
 ## Development
