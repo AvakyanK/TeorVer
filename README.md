@@ -27,7 +27,7 @@ Here and below, x can take the following data types:
 <<<<<<< HEAD
 6. x = {x1:p1, x2:p2, x3:p3} The key is a random value, the value is its probability. Order is important
 =======
-6. x = {x1=>p1, x2=>p2, x3=>p3} The key is a random value, the value is its probability. Order is important 
+6. x = {x1=>p1, x2=>p2, x3=>p3} The key is a random value, the value is its probability. Order is important
 >>>>>>> b6e85950008818fa6e5fb229dfe5c720c251b3a2
 
 
@@ -93,12 +93,14 @@ distibFun(hashValProb)
 You can calculate the median
 '''ruby
 median(arr)
+'''.
 Input parameters:
 arr - array of values;
 
 You can calculate the starting moment
 '''ruby
 starting_moment(arr, k)
+'''.
 Input parameters:
 arr - array of values;  
 k - integer value (moment order);
@@ -106,6 +108,7 @@ k - integer value (moment order);
 You can calculate the central moment
 '''ruby
 central_moment(arr, k)
+'''.
 Input parameters:
 arr - array of values;  
 k - integer value (moment order);
@@ -114,6 +117,7 @@ k - integer value (moment order);
 You can calculate the excess
 '''ruby
 excess(arr)
+'''.
 Input parameters:
 arr - array of values;
 
