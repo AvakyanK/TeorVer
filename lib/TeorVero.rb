@@ -3,6 +3,8 @@
 require_relative "TeorVero/version"
 include Math
 
+
+
 module TeorVero
   class Error < StandardError; end
   
