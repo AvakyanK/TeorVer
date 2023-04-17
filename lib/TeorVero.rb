@@ -367,7 +367,7 @@ end
 def median(arr)
   if arr.is_a?(Array)
     return nil if arr == []
-    return arr if arr.length == 1
+    return arr[0] if arr.length == 1
     # Сортируем массив по возрастанию значений
     sorted_arr = arr.sort
 
