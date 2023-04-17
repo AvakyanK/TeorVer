@@ -387,6 +387,7 @@ def median(arr)
 end
 
 
+# Мода
 def mode(arr)
   if arr.is_a?(Array)
     # Создаем пустой хэш для хранения количества вхождений каждого элемента
@@ -412,6 +413,19 @@ def mode(arr)
   end
 end
 
+# Начальный момент
+def starting_moment(arr, k)
+  if arr.is_a?(Array) and k.is_a?(Integer)
+    return nil if arr == []
+    moment_k = 0
+    arr.each do |x|
+      moment_k += x**k
+    end
+    return moment_k / arr.length.to_f
+  else
+    return "Data entered incorrectly"
+  end
+end
 
 
   #Дальше код
