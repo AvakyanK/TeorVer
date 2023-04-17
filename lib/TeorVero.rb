@@ -362,11 +362,15 @@ end
   end
 end
 
+
+
+
 # Медиана
-def median(arr)
+def self.median(arr)
   if arr.is_a?(Array)
     return nil if arr == []
-    return arr if arr.length == 1
+    return arr[0] if arr.length == 1
+
     # Сортируем массив по возрастанию значений
     sorted_arr = arr.sort
 
@@ -384,5 +388,106 @@ def median(arr)
     return "Data entered incorrectly"
   end
 
+end
+
+
+# Мода
+def self.mode(arr)
+  if arr.is_a?(Array)
+    # Создаем пустой хэш для хранения количества вхождений каждого элемента
+    counts = Hash.new(0)
+
+    # Считаем количество вхождений каждого элемента массива
+    arr.each do |elem|
+      counts[elem] += 1
+    end
+
+    # Находим значение(я) с максимальным количеством вхождений
+    max_count = counts.values.max
+    modes = counts.select { |k, v| v == max_count }.keys.sort
+
+    # Если все элементы массива уникальны, то моды нет
+    if modes.length == arr.length
+      return nil
+    else
+      return modes
+    end
+  else
+    return "Data entered incorrectly"
+  end
+end
+
+# Начальный момент
+def self.starting_moment(arr, k)
+  if arr.is_a?(Array) and k.is_a?(Integer)
+    return nil if arr == []
+    moment_k = 0
+    arr.each do |x|
+      moment_k += x**k
+    end
+    return moment_k / arr.length.to_f
+  else
+    return "Data entered incorrectly"
+  end
+end
+
+
+# Центральный момент
+def self.central_moment(arr, k)
+  if arr.is_a?(Array) and  k.is_a?(Integer)
+    mean = arr.sum / arr.length.to_f
+    moment_k = 0
+    arr.each do |x|
+      moment_k += (x - mean)**k
+    end
+    return moment_k / arr.length.to_f
+  else
+    return "Data entered incorrectly"
+  end
+end
+
+
+# Асимметрия
+def self.skewness(arr)
+  if arr.is_a?(Array)
+    return nil if arr == []
+    n = arr.length
+    return 0.0 if n == 1
+    mean = arr.sum / n.to_f
+    variance = arr.sum { |x| (x - mean)**2 } / (n - 1).to_f
+    standard_deviation = Math.sqrt(variance)
+
+    numerator = arr.sum { |x| (x - mean)**3 }
+    denominator = n * standard_deviation**3
+
+    return numerator / denominator
+  else
+    return "Data entered incorrectly"
+  end
+end
+
+
+# Эксцесс
+def self.excess(arr)
+  if arr.is_a?(Array)
+    n = arr.length
+    return nil if n < 4 # нельзя найти эксцесс для массива с менее чем 4 элементами
+
+    # находим выборочное среднее
+    m = arr.reduce(:+) / n.to_f
+
+    # находим выборочное среднее кубов отклонений
+    m3 = arr.reduce(0) { |sum, x| sum + (x - m)**3 } / n.to_f
+
+    # находим стандартное отклонение
+    s = Math.sqrt(arr.reduce(0) { |sum, x| sum + (x - m)**2 } / (n - 1))
+
+    # вычисляем эксцесс
+    return (m3 - 3*m*s**2 - m**3) / s**4
+  else
+    return "Data entered incorrectly"
+  end
+end
   #Дальше код
 end
+
