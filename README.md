@@ -18,29 +18,66 @@ You can calculate the expected value with
 matojid(x, y=:None)
 '''.
 x and y can be interchanged
-Here and below, x can take the following data types:
+x and y can take the following data types:
 1. x = c; (c = const) (x = c; y = c => Error)
 2. x = [1, 2, 3] y = [0.1, 0,2, 0.7] These arrays contain the values of random variables and their probabilities
 3. x = [[1, 2, 3], [0.1, 0,2, 0.7]] The array accepts both random values and their probabilities. Order doesn't matter
 4. x = [[x1, p1], [x2, p2], [x3, p3]] x takes a random value, p takes its probability
-5. x = {"x1" => 1, "x2" => 2, "x3" => 3} y = {"p1" => 0.1, "p2" => 0.2, "p3" => 0.7 }
-<<<<<<< HEAD
-6. x = {x1:p1, x2:p2, x3:p3} The key is a random value, the value is its probability. Order is important
-=======
+5. x = {x1: 1, x2: 2, x3: 3} y = {"p1" => 0.1, "p2" => 0.2, "p3" => 0.7 }
 6. x = {x1=>p1, x2=>p2, x3=>p3} The key is a random value, the value is its probability. Order is important
->>>>>>> b6e85950008818fa6e5fb229dfe5c720c251b3a2
+7. x = "1 2 3, 0.1 0.2 0.7"
+8. x = "x=1; y=2; z=3;" y="0.1; 0.2; 0.7". MUST NOT be called x1, x2, x3...
 
 
 You can calculate the random variable variance with
 '''ruby
-dispersion.create(hashValProb)
-'''
+dispersion(x, y=:None)
+'''.
+x and y can be interchanged
+x and y can take the following data types:
+1. x = c; (c = const) (x = c; y = c => Error)
+2. x = [1, 2, 3] y = [0.1, 0,2, 0.7] These arrays contain the values of random variables and their probabilities
+3. x = [[1, 2, 3], [0.1, 0,2, 0.7]] The array accepts both random values and their probabilities. Order doesn't matter
+4. x = [[x1, p1], [x2, p2], [x3, p3]] x takes a random value, p takes its probability
+5. x = {x1: 1, x2: 2, x3: 3} y = {"p1" => 0.1, "p2" => 0.2, "p3" => 0.7 }
+6. x = {x1=>p1, x2=>p2, x3=>p3} The key is a random value, the value is its probability. Order is important
+7. x = "1 2 3, 0.1 0.2 0.7"
+8. x = "x=1; y=2; z=3;" y="0.1; 0.2; 0.7". MUST NOT be called x1, x2, x3...
+
 
 
 You can calculate the standard deviation with
 '''ruby
-standardDev(hashValProb)
-'''
+kvadrdev(x, y=:None)
+'''.
+x and y can be interchanged
+x and y can take the following data types:
+1. x = c; (c = const) (x = c; y = c => Error)
+2. x = [1, 2, 3] y = [0.1, 0,2, 0.7] These arrays contain the values of random variables and their probabilities
+3. x = [[1, 2, 3], [0.1, 0,2, 0.7]] The array accepts both random values and their probabilities. Order doesn't matter
+4. x = [[x1, p1], [x2, p2], [x3, p3]] x takes a random value, p takes its probability
+5. x = {x1: 1, x2: 2, x3: 3} y = {"p1" => 0.1, "p2" => 0.2, "p3" => 0.7 }
+6. x = {x1=>p1, x2=>p2, x3=>p3} The key is a random value, the value is its probability. Order is important
+7. x = "1 2 3, 0.1 0.2 0.7"
+8. x = "x=1; y=2; z=3;" y="0.1; 0.2; 0.7". MUST NOT be called x1, x2, x3...
+
+
+You can calculate the сumulative distribution function
+'''ruby
+funcrasp(x, y=:None)
+'''.
+Calculates the distribution function of a random variable and describes its values on intervals.
+x and y can be interchanged
+x and y can take the following data types:
+1. x = c; (c = const) (x = c; y = c => Error)
+2. x = [1, 2, 3] y = [0.1, 0,2, 0.7] These arrays contain the values of random variables and their probabilities
+3. x = [[1, 2, 3], [0.1, 0,2, 0.7]] The array accepts both random values and their probabilities. Order doesn't matter
+4. x = [[x1, p1], [x2, p2], [x3, p3]] x takes a random value, p takes its probability
+5. x = {x1: 1, x2: 2, x3: 3} y = {"p1" => 0.1, "p2" => 0.2, "p3" => 0.7 }
+6. x = {x1=>p1, x2=>p2, x3=>p3} The key is a random value, the value is its probability. Order is important
+7. x = "1 2 3, 0.1 0.2 0.7"
+8. x = "x=1; y=2; z=3;" y="0.1; 0.2; 0.7". MUST NOT be called x1, x2, x3...
+
 
 
 You can calculate the binomial distribution with
@@ -52,7 +89,7 @@ n - number of independent events;
 k - number of occurrences of the event;
 p - probability of occurrence of one event.
 Result:
-probability of occurrence of a possible value of k from n independent trials
+probability of occurrence of a possible value of k from n independent trials.
 
 
 
@@ -62,7 +99,7 @@ binExpectVal(n, p)
 '''.
 Input parameters:
 n - number of values;
-p - the probability of occurrence of a value
+p - the probability of occurrence of a value.
 
 
 You can calculate the binomial random variable variance with
@@ -82,13 +119,6 @@ binStandardDev(n, p)
 Input parameters:
 n - number of values;
 p - the probability of occurrence of a value.
-
-
-You can calculate the сumulative distribution function
-'''ruby
-distibFun(hashValProb)
-
-
 
 You can calculate the median
 '''ruby
@@ -120,8 +150,6 @@ excess(arr)
 '''.
 Input parameters:
 arr - array of values;
-
-
 
 '''
 
