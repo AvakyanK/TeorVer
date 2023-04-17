@@ -363,11 +363,14 @@ end
 end
 
 
+
+
 # Медиана
 def self.median(arr)
   if arr.is_a?(Array)
     return nil if arr == []
     return arr[0] if arr.length == 1
+
     # Сортируем массив по возрастанию значений
     sorted_arr = arr.sort
 
@@ -384,6 +387,7 @@ def self.median(arr)
   else
     return "Data entered incorrectly"
   end
+
 end
 
 
@@ -486,3 +490,4 @@ def self.excess(arr)
 end
   #Дальше код
 end
+
