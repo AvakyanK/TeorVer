@@ -428,5 +428,20 @@ def starting_moment(arr, k)
 end
 
 
+# Центральный момент
+def central_moment(arr, k)
+  if arr.is_a?(Array) and  k.is_a?(Integer)
+    mean = arr.sum / arr.length.to_f
+    moment_k = 0
+    arr.each do |x|
+      moment_k += (x - mean)**k
+    end
+    return moment_k / arr.length.to_f
+  else
+    return "Data entered incorrectly"
+  end
+end
+
+
   #Дальше код
 end
